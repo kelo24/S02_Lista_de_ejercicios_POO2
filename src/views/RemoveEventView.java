@@ -5,6 +5,8 @@ import javax.swing.JPanel;
 import javax.swing.JOptionPane;
 import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
+import java.awt.Dimension;
+import javax.swing.JButton;
 
 import controllers.RemoveEventController;
 import core.Model;
@@ -24,6 +26,8 @@ public class RemoveEventView extends JPanel implements View {
         this.table = table;
         
         make_frame();
+        make_btn_remove();
+        make_btn_close();
     }
     
     // Methods
@@ -38,6 +42,26 @@ public class RemoveEventView extends JPanel implements View {
     /* Creates a view's frame */
     private void make_frame() {
         JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.setPreferredSize(new Dimension(500, 200));
         add(scrollPane, BorderLayout.CENTER);
+    }
+    
+    /* Botón REMOVER eventos */
+    private void make_btn_remove() {
+        
+        // Makes button
+        JButton btn_remove = new JButton("Remove");
+        
+        btn_remove.setBounds(0, 0, 89, 23);
+        add(btn_remove);
+    }
+    
+    /* Botón CANCEL para deseleccionar todas las opciones */
+    private void make_btn_close() {
+        
+        // Makes button
+        JButton btn_close = new JButton("Close");
+        btn_close.setBounds(0, 0, 89, 23);
+        add(btn_close);
     }
 }

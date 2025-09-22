@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 import core.Controller;
 import models.SchedulerEvent;
 import models.SchedulerIO;
-import views.EventListView;
+//import views.EventListView;
 import views.NewEventView;
 
 

@@ -22,6 +22,7 @@ public class HomeController extends Controller {
         /* Initializes other controllers */
         eventListController.run();
         newEventController.run();
+        removeEventController.run();
         
         /* Initializes HomeView */
         homeView = new HomeView(this, mainFrame);

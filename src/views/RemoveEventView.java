@@ -3,6 +3,8 @@ package views;
 import javax.swing.JTable;
 import javax.swing.JPanel;
 import javax.swing.JOptionPane;
+import java.awt.BorderLayout;
+import javax.swing.JScrollPane;
 
 import controllers.RemoveEventController;
 import core.Model;
@@ -20,6 +22,8 @@ public class RemoveEventView extends JPanel implements View {
         
         this.removeEventController = removeEventController;
         this.table = table;
+        
+        make_frame();
     }
     
     // Methods
@@ -31,6 +35,9 @@ public class RemoveEventView extends JPanel implements View {
         }
     }
     
-    
-    
+    /* Creates a view's frame */
+    private void make_frame() {
+        JScrollPane scrollPane = new JScrollPane(table);
+        add(scrollPane, BorderLayout.CENTER);
+    }
 }

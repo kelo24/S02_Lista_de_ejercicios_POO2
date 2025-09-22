@@ -17,4 +17,9 @@ public class RemoveEventController extends Controller {
     public void run() {
         
     }
+    
+    // Getter
+    public RemoveEventView getView() {
+        return removeEventView;
+    }
 }

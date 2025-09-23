@@ -7,10 +7,15 @@ import java.awt.BorderLayout;
 import javax.swing.JScrollPane;
 import java.awt.Dimension;
 import javax.swing.JButton;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.table.DefaultTableModel;
 
 import controllers.RemoveEventController;
 import core.Model;
 import core.View;
+import java.util.ArrayList;
+import models.SchedulerIO;
 
 
 public class RemoveEventView extends JPanel implements View {
@@ -42,7 +47,7 @@ public class RemoveEventView extends JPanel implements View {
     /* Creates a view's frame */
     private void make_frame() {
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setPreferredSize(new Dimension(500, 200));
+        scrollPane.setPreferredSize(new Dimension(450, 200));
         add(scrollPane, BorderLayout.CENTER);
     }
     
@@ -52,8 +57,32 @@ public class RemoveEventView extends JPanel implements View {
         // Makes button
         JButton btn_remove = new JButton("Remove");
         
-        btn_remove.setBounds(0, 0, 89, 23);
+        btn_remove.setBounds(100, 0, 89, 23);
         add(btn_remove);
+        
+        btn_remove.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                
+                DefaultTableModel model = (DefaultTableModel) table.getModel();
+                
+                ArrayList<String> toDelete = new ArrayList<>();
+                
+                for (int i = 0; i <= model.getRowCount() - 1; i++) {
+                    Boolean checked = (Boolean) model.getValueAt(i, 5);
+                    
+                    if (checked != null && checked) {
+                        toDelete.add(model.getValueAt(i, 1).toString());
+                    }
+                }
+                try {
+                    removeEventController.removeEvents(toDelete);
+                } catch (Exception ex) {
+                    
+                }
+            }
+        });
     }
     
     /* Botón CANCEL para deseleccionar todas las opciones */

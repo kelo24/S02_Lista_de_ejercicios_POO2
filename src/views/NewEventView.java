@@ -198,7 +198,7 @@ public class NewEventView extends JPanel implements View {
 			
 		newEventController.addEvent(event);
 		cleanFields();
-		}
+            }
 	});
     }
     

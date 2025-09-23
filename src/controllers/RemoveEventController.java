@@ -9,6 +9,7 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.SwingConstants;
 
 import core.Controller;
+import java.util.ArrayList;
 import models.SchedulerIO;
 import views.RemoveEventView;
 
@@ -82,4 +83,16 @@ public class RemoveEventController extends Controller {
         
         return dataColumns;
     }
+    
+    /* Remove events selected */
+    public void removeEvents(ArrayList<String> listToDelete) throws Exception {
+        
+        SchedulerIO schedulerIO = new SchedulerIO();
+        schedulerIO.attach(removeEventView);
+        schedulerIO.deleteEvents(listToDelete);
+        
+//        System.out.println();
+    }
+    
+    
 }

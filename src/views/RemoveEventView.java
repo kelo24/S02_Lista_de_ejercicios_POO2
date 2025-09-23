@@ -33,6 +33,7 @@ public class RemoveEventView extends JPanel implements View {
         make_frame();
         make_btn_remove();
         make_btn_close();
+        make_btn_selectAll();
     }
     
     // Methods
@@ -92,5 +93,29 @@ public class RemoveEventView extends JPanel implements View {
         JButton btn_close = new JButton("Close");
         btn_close.setBounds(0, 0, 89, 23);
         add(btn_close);
+    }
+    
+    /* SELECCIOJAR TODOS */
+    private void make_btn_selectAll() {
+        
+        // Makes button
+        JButton btn_selectAll = new JButton("Seleccionar todos");
+        btn_selectAll.setBounds(0, 0, 89, 23);
+        add(btn_selectAll);
+        
+        // Listener
+        btn_selectAll.addActionListener(new ActionListener() {
+            
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                
+                DefaultTableModel model = (DefaultTableModel) table.getModel();
+                
+                for (int i = 0; i <= model.getRowCount() - 1; i++) {
+                    
+                    model.setValueAt(true, i, 5);
+                }
+            }
+        });
     }
 }
